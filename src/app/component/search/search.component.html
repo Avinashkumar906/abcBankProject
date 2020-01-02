@@ -1,0 +1,56 @@
+<div class="container-fluid">
+   <br>
+    
+  <div class="row" *ngIf="!showResult">
+      <div class="col-md-1"></div>
+      <div class="col-md-8">
+        <form class="example-form" [formGroup]="searchForm" (ngSubmit)="onFormSubmit(searchForm.value)">
+            <!-- <mat-form-field> -->
+                <!-- <mat-label>Search By</mat-label>
+                <mat-select formControlName="searchType">
+                  <mat-option *ngFor="let search of searches" [value]="search.value" >
+                    {{search.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> -->
+
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Enter Details" value="" formControlName="details">
+                </mat-form-field>
+
+                <button  [disabled]="searchForm.invalid" class="btn btn-primary" mat-button>Search</button>
+                <br><br>
+                <p class="text-center"><mat-spinner *ngIf="showSpinner"></mat-spinner></p>
+        </form>
+        <div *ngIf="isError">
+          <h3><strong>'{{nameSearch}} '</strong>: not found in database </h3>
+      </div>
+
+      </div>
+  </div>
+
+
+ 
+ 
+  <div class="col-12 mb-3 mt-3" *ngIf="showResult">
+      <h3>Search result for : <strong>'{{nameSearch}} '</strong> </h3>
+  </div>
+  <div class="col-12 mb-3 " >
+      <div class="card p-3" *ngIf="noData">
+          <h3>No results found for: <strong>'{{nameSearch}} '</strong> </h3>
+      </div>
+      <div class="card p-3" *ngFor="let data of searchList">
+          <p><b>Account Primary Owner Name </b> : {{data.primary_holder}}</p>
+          <p><b>Account Number </b> : {{data.account_number}}</p>
+          <p><b>Type</b> : {{data.account_type}}</p>
+          <p><b>Balance</b> : {{data.account_balance | currency}}</p>
+          <p><b>Address</b> : {{data.address}}</p>
+          <p><b>Branch ID</b> : {{data.branch_ID}}</p>
+
+      </div>
+      <button *ngIf="showResult" class="btn btn-primary" mat-button (click)="reset()">Reset Search</button>
+  </div>
+ 
+
+</div>
+

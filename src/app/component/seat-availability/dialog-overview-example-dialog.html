@@ -1,0 +1,103 @@
+<h1 mat-dialog-title>Transaction Details for:  <strong>{{ data[2]}}</strong></h1>
+<div mat-dialog-content>
+        
+    <!-- <table class="table table-striped table-bordered">
+        <thead>
+            <tr style="background-color: black;color: white;">
+                <th *ngFor="let head of data[1]">{{head}}</th>
+              </tr>
+         </thead>
+                <tbody>
+             <tr *ngFor="let item of data[0]">
+                <td>{{item.transaction}}</td>
+                <td>{{item.transaction_amount | currency}}</td>
+                <td>{{item.transaction_date | date }}</td>
+                <td>{{item.transaction_charge}}</td>
+                <td>{{item.transaction_id}}</td>
+                <td>{{item.transaction_status}}</td>
+            </tr>
+
+            </tbody>
+    </table> -->
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+      
+   
+      <div class="mat-elevation-z8">
+        <table mat-table class="table table-striped table-bordered" [dataSource]="dataSource" matSort>
+      
+          <!-- ID Column -->
+          <ng-container matColumnDef="Type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction </th>
+            <td mat-cell *matCellDef="let row"> {{row.transaction}} </td>
+          </ng-container>
+      
+          <!-- Progress Column -->
+          <ng-container matColumnDef="Amount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+            <td mat-cell *matCellDef="let row"> {{row.transaction_amount | currency}}</td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="Date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+            <td mat-cell *matCellDef="let row"> {{row.transaction_date | date:'fullTime' }} </td>
+          </ng-container>
+      
+          <!-- Color Column -->
+          <ng-container matColumnDef="Charge">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Charge($) </th>
+            <td mat-cell *matCellDef="let row" > {{row.transaction_charge}} </td>
+          </ng-container>
+
+           <!-- Color Column -->
+           <ng-container matColumnDef="Transaction Id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Id </th>
+            <td mat-cell *matCellDef="let row" > {{row.transaction_id}} </td>
+          </ng-container>
+
+           <!-- Color Column -->
+           <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let row" > {{row.transaction_status}} </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns:displayedColumns;">
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+      
+      
+      <!-- Copyright 2019 Google LLC. All Rights Reserved.
+          Use of this source code is governed by an MIT-style license that
+          can be found in the LICENSE file at http://angular.io/license -->
+
+</div>
+<div mat-dialog-actions>
+    <button  mat-raised-button  [mat-dialog-close]="data" cdkFocusInitial>Close</button>
+</div>
+
+<style>
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+th{
+      background-color: #000000;
+      color: white;
+  }
+  
+
+</style>

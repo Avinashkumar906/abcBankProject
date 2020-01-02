@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Update User Details for:<strong>{{data[0].user_fname}}&nbsp;{{data[0].user_lname}}</strong></h1>
+<div mat-dialog-content>
+
+    <form class="example-form" [formGroup]="updateForm" (ngSubmit)="onFormSubmit(updateForm.value)">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput value="{{data[0].user_fname}}&nbsp;{{data[0].user_lname}}" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput value="{{data[0].email_address}}" formControlName="email">
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Secondary email</mat-label>
+            <input matInput value="{{data[0].secondary_number}}" formControlName="secondary_number">
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Mobile Number</mat-label>
+            <input matInput value="{{data[0].mobile_number}}" formControlName="mobile_number">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input matInput value="{{data[0].address}}" formControlName="address">
+        </mat-form-field>
+
+
+
+
+        <mat-form-field>
+            <mat-label>Primary Contact</mat-label>
+            <input matInput value="{{data[0].mobile_number}}" formControlName="mobile_number1">
+        </mat-form-field>
+
+        <div class="mx-auto" style="width: 200px;">
+            <button mat-raised-button class="btn btn-primary" [disabled]="updateForm.invalid">
+                Submit Request
+            </button>
+        </div>
+    </form>
+
+</div>

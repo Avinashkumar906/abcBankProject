@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 offset mt-5">
+
+
+          <mat-card class="p-5">
+
+              <h2>Fixed Deposit Request</h2>
+              <form class="example-form" [formGroup]="fdForm" (ngSubmit)="onFormSubmit(fdForm.value)">
+			  
+                  <mat-form-field class="example-half-width" >
+                      <input matInput  placeholder="Account Id" formControlName="accountId" readonly>
+                  </mat-form-field>
+                 
+				   <mat-form-field class="example-full-width">
+                      <input type="number" matInput placeholder="Initial balance" formControlName="balance">
+                  </mat-form-field>
+                  
+				   <mat-form-field class="example-full-width">
+                      <input type="text" matInput placeholder="Interest(%)" formControlName="interest">
+                  </mat-form-field>
+				  
+				  
+				    <mat-form-field>
+                    <input matInput [matDatepicker]="pickerStart" [min]="todayDate"  formControlName="startDate" placeholder="Start Date">
+                    <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi #pickerStart></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="pickerEnd" [min]="todayDate"  formControlName="endDate" placeholder="End Date">
+                    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi #pickerEnd></mat-datepicker>
+                  </mat-form-field>
+
+				 
+
+                  <button  mat-flat-button color="primary"  [disabled]="!fdForm.valid">
+                    <img *ngIf="loading3"
+                    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    Submit Request
+                  </button>
+              </form>
+          </mat-card>
+      </div>
+      <!-- <div class="col-1" style="margin-top: 170px;">
+          <button class="btn btn-md btn-primary" (click)="openDialog()" mat-stroked-button><i class="fa fa-search fa6" aria-hidden="true"></i> Search</button>
+      </div> -->
+  </div>
+</div>

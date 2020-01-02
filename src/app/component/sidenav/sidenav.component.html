@@ -1,0 +1,70 @@
+<app-header></app-header>
+
+<mat-sidenav-container id="container" fullscreen>
+  <mat-sidenav *ngIf="isLoggedIn" style="overflow: hidden;min-width: 250px;" class="w-25 p-2 bg-dark text-light" mode="side" opened>
+    <div class="d-flex flex-column h-100">
+
+      <div class="w-100 text-center h-auto">
+        <img src="./assets/img/faces/images.png" (click)="toggle()" alt="Circle Image" class="rounded-circle img-fluid">
+      </div>
+  
+      <div class="w-100 flex-grow-1">
+        <mat-nav-list class="py-4">
+          <h6 class="h4 m-0">
+            <button mat-button routerLink="">
+              <mat-icon>home</mat-icon>
+              <span class="nav-list-custom"> Home</span>
+            </button>
+          </h6>
+    
+          <span *ngIf="isAdmin">
+            <h6 class="h4 m-0">
+              <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>flag</mat-icon> 
+                <span class="nav-list-custom"> Admin</span>
+            </button>
+            </h6>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="route()">Open New Account</button>
+              <button mat-menu-item (click)="routeFd()">Open new Fixed Deposit</button>
+              <button mat-menu-item (click)="routeSearch()">Global Search</button>
+              <button mat-menu-item (click)="routeAd()">View Admin Details</button>
+            </mat-menu>
+          </span>
+    
+          <h6 class="h4 m-0">
+            <button mat-button routerLink="page">
+              <mat-icon>star</mat-icon> 
+              <span class="nav-list-custom"> Account</span>
+            </button>
+          </h6>
+    
+          <h6 class="h4 m-0">
+            <button mat-button routerLink="page">
+              <mat-icon>flag</mat-icon> 
+              <span class="nav-list-custom"> Dashboard</span>
+            </button>
+          </h6>
+    
+        </mat-nav-list>
+      </div>
+  
+      <div class="w-100 h-auto">
+        <div class="text-center pb-2">
+          <h6 class="h6">{{userName}}</h6>
+          <h6 class="h6">{{email}}</h6>
+          <button mat-raised-button color="primary" (click)="logOut()">
+            <mat-icon>power_settings_new</mat-icon>
+            <span> Sign out</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

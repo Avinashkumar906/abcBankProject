@@ -1,0 +1,34 @@
+<div class="container-fluid d-flex p-3">
+    <div class="w-100 m-2">
+        <mat-card class="container" style="max-width: 750px;">
+            <div class="row">
+                <div class="col-sm-6 p-1 d-none d-sm-block text-right" style="max-height: 60vh;overflow: hidden;">
+                    <img src="./assets/img/bank.png" height="100%">
+                </div>
+                <div class="col-sm-6 p-1">
+                    <div class="w-100 p-2 text-center">
+                        <h2 class="h3 pb-2 mb-2 text-dark">Login to Internet Banking</h2>
+                        <form class="example-form my-3 p-2" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onFormSubmit(loginForm)">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Username" formControlName="userId">
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Password" type="password" formControlName="password">
+                            </mat-form-field>
+                            <section class="w-100">
+                                <mat-checkbox>Remember Password</mat-checkbox>
+                            </section>
+                            <button mat-raised-button color="light" [disabled]="!loginForm.valid || loading3">
+                                <img class="m-2 img-fluid" *ngIf="loading3" src="./assets/img/loader.gif"
+                                />{{loading3 ? 'Loading' : 'Login'}}
+                            </button>
+                            <div class="w-100 m-1">
+                                <i><small class="text-muted" *ngIf="isUserInvalid">*{{error}}</small></i>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

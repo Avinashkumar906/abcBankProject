@@ -1,0 +1,95 @@
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-6">
+      <h2>Transaction details for All users</h2>
+      <div *ngIf="dataList.length == 0" style="margin-left: 140px;">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="dataList.length > 0">
+    <div class="col-12">
+
+      <div class="card">
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <tr>
+                  <th class="ng-star-inserted">Account Id</th>
+                  <th class="ng-star-inserted">Transaction Id</th>
+                  <th class="ng-star-inserted">Type</th>
+                  <th class="ng-star-inserted">Amount</th>
+                  <th class="ng-star-inserted">Date</th>
+                  <th class="ng-star-inserted">Charge</th>
+                  <th class="ng-star-inserted">Status</th>
+                  <th class="ng-star-inserted">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="ng-star-inserted" *ngFor="let item of dataList">
+                  <td>{{item.accounts_id}}</td>
+                  <td>{{item.transaction_id}}</td>
+                  <td>{{item.transaction}}</td>
+                  <td>{{item.transaction_amount}}</td>
+                  <td>{{item.transaction_date | date}}</td>
+                  <td>{{item.transaction_charge}}</td>
+                  <td>{{item.transaction_status}}</td>
+                  <td>
+                    <p><i class="material-icons p-2" (click)="approve(item)"
+                        *ngIf="item.transaction_status =='pending'">done</i>
+                      <i class="fas fa-trash-alt fa-2x" (click)="reject(item)"></i></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+        <h2>Welcome <strong>{{adminDetails.user_fname}}&nbsp;{{adminDetails.user_lname}}</strong></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Admin Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <span>Name : <strong>{{adminDetails.user_fname}}&nbsp;{{adminDetails.user_lname}}</strong></span><br>
+          <span>Email : <strong>{{adminDetails.email_address}}</strong></span><br>
+          <span>Secondary email : <strong>{{adminDetails.secondary_number}}</strong></span><br>
+          <span>Mobile Number : <strong>{{adminDetails.mobile_number}}</strong></span><br>
+          <span>Address : <strong>{{adminDetails.address}}</strong></span><br>
+          <span>Primary Contact : <strong>{{adminDetails.mobile_number}}</strong></span>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+
+    <div class="col-sm-4">
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Admin Actions</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <span><button mat-flat-button (click)="openNewAcc()">Open New Account</button></span><br><br>
+              <span><button mat-flat-button (click)="openNewFD()">Open New Fixed Deposit</button></span><br><br>
+              <span><button mat-flat-button (click)="openSearch()">Access global search</button></span><br>
+            </mat-card-content>
+    
+          </mat-card>
+    </div>
+  </div>
+</div>

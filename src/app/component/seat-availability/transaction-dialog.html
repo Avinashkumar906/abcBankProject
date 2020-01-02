@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Make Transaction for: <strong>{{data[0].account_number}}</strong> </h1>
+<div mat-dialog-content>
+
+    <form class="example-form" [formGroup]="transactForm" (ngSubmit)="onFormSubmit(transactForm.value)">
+        <mat-form-field>
+            <mat-label>Account Id</mat-label>
+            <input matInput formControlName="accounts_id" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Transaction type</mat-label>
+            <mat-select formControlName="transaction">
+                <mat-option value="credit">credit </mat-option>
+                <mat-option value="debit">debit </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input type="number" matInput value="{{data[0].email_address}}" formControlName="transaction_amount">
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Transaction Charge</mat-label>
+            <input  type="number" matInput value="{{data[0].secondary_number}}" formControlName="transaction_charge">
+        </mat-form-field>
+
+        <div class="mx-auto" style="width: 200px;">
+            <button mat-flat-button color="primary" [disabled]="transactForm.invalid || loading3">
+                <img *ngIf="loading3"
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                Submit Request
+            </button>
+        </div>
+    </form>
+
+</div>
