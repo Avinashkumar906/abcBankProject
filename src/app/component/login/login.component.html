@@ -19,8 +19,7 @@
                                 <mat-checkbox>Remember Password</mat-checkbox>
                             </section>
                             <button mat-raised-button color="light" [disabled]="!loginForm.valid || loading3">
-                                <img class="m-2 img-fluid" *ngIf="loading3" src="./assets/img/loader.gif"
-                                />{{loading3 ? 'Loading' : 'Login'}}
+                                <img class="m-2 img-fluid" *ngIf="loading3" src="./assets/img/loader.gif" width="22">{{loading3 ? 'loading' : 'Login'}}
                             </button>
                             <div class="w-100 m-1">
                                 <i><small class="text-muted" *ngIf="isUserInvalid">*{{error}}</small></i>
